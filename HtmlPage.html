@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="jquery-1.11.0.js"></script>
+    <link href="colpick.css" rel="stylesheet" />
+    <script src="colpick.js"></script>
+    <title></title>
+    <style>
+        *
+        {
+            font-family: 'Segoe UI',sans-serif;
+        }
+
+        #DropDown
+        {
+            width: 200px;
+        }
+
+        #ByText
+        {
+            height: 25px;
+            width: 200px;
+        }
+
+        #TagText
+        {
+            height: 25px;
+            width: 200px;
+        }
+
+        #SaluteText
+        {
+            height: 25px;
+            width: 200px;
+        }
+
+        #TextArea1
+        {
+            width: 200px;
+        }
+        #ImagesList img
+        {
+            float:left; 
+            height:80px; 
+            width:150px;
+           margin:10px;
+           cursor:pointer;
+        }
+            #ImagesList img:hover
+            {
+                border:1px solid #0094ff;
+            }
+        #Text1
+        {
+            width: 216px;
+        }
+    </style>
+</head>
+<body>
+    <div id="MainWrapper" style="height: auto">
+        <header style="height: 60px; background-color: #0094ff; color: white; font-size: xx-large; line-height: 60px; text-align: center">
+            SOCIAL MEDIA 
+
+        </header>
+        <div style="height: 30px; margin-top: 10px; line-height: 30px; background-color: #d4d4d4">
+            <span style="margin-left: 5%;">Social media Quotes Generator </span>
+        </div>
+
+        <div id="ContentWrapper">
+            <div id="Controls" style="width: 100%; height: 100px; background-color: #ededed; border-top: 1px solid #565454">
+
+                <div style="margin-left: 5%; float: left; width: auto; padding-top: 10px; padding-bottom: 10px;">
+
+
+                    <input id="Link" type="text" style="width:200px"  /><input id="Reset1" type="reset" value="Clear"/><input id="Button1" type="button" value="Link" /><br />
+                    <br />
+                    <select id="DropDown">
+                        <option value="FUll Text">Full text</option>
+                        <option value="Partial text" disabled="disabled">Partial text</option>
+                    </select>
+                </div>
+                <div id="ImagesList" style="float: left; margin-left: 5px; height: 100px; width: auto; border-left: 1px solid #d4d4d4; overflow:auto">
+                    
+                        <img src="demo.png" alt=""  />
+                        <img src="bg_flag.jpg" alt=""  />
+                        <img src="royal.jpg" alt="" />
+                        <img src="demo.png" alt=""/>
+                </div>
+            </div>
+            <center>
+            <div id="Area" style="position:absolute; margin-top:10px;height:auto; width:1000px">
+                <div style="float:left; width:250px">
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                Main Content:
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>
+                                <textarea id="MainContentx" rows="8"></textarea>
+                            </td>
+                                
+                        </tr>
+                         <tr>
+                            <td>
+                                By :-
+                            </td>
+                             </tr>
+                             <tr>
+                            <td>
+                                <input type="text" id="ByTextx" />
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>
+                                #tag/Topic/Heading
+                            </td>
+                             </tr>
+                             <tr>
+                            <td>
+                                <input type="text" id="TagTextx" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                SM salutation
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>
+                                <input type="text" id="SaluteTextx" />
+                            </td>
+                        </tr>
+                          <tr>
+                            
+                            <td>
+                                <input type="submit" id="Write" value="Write Text" style="width: 109px" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                   <div id="CanvasWrapper" style="float:left; width:750px; height:500px; background-color:#deedf7">    
+                                     
+                        <div>
+                       <canvas id="Workarea" width="750" height="500">
+                           this should not be shown 
+                       </canvas>
+                           </div>                       
+                </div>
+              
+                <div style="clear:both; text-align:center">
+                      <hr />
+                    <input type="button" id="Create" value="Create Downloadable Image" />
+                    <br />
+                    <br />
+                </div>
+                 <div id="Frame" style="position: absolute; width: 750px; height: 500px; left: 250px; top: 0px; border:1px solid  #808080;z-index:1000; display:none">
+        <div style="margin-top:10px; margin-left:10px; width:730px; height:350px; border:1px solid  #808080 ">
+            <div style="float:right; width:90px;cursor:pointer ">
+                <span id="MainPlus" style="width:20px;"><img src="plus.png" width="20" height="20"/></span>
+                <span id="MainMinus" style="width:20px;"><img src="minus.png" width="20" height="20"/></span>
+                <span id="MainColor" style="width:20px"><img src="color.png" width="20" height="20"/></span></div>
+        </div>
+        <div style="margin-left:10px; margin-top:10px; width:730px; height:50px; border:1px solid #808080">
+             <div style="float:right; width:90px;cursor:pointer ">
+                <span id="ByPlus" style="width:20px;"><img src="plus.png" width="20" height="20"/></span>
+                <span id="ByMinus" style="width:20px;"><img src="minus.png" width="20" height="20"/></span>
+                <span id="ByColor" style="width:20px"><img src="color.png" width="20" height="20"/></span></div>
+        </div>
+         <div style="margin-left:10px; margin-top:10px; width:730px; height:50px; border:1px solid  #808080 ">
+              <div style="float:right; width:90px;cursor:pointer ">
+                <span id="TagPlus" style="width:20px;"><img src="plus.png" width="20" height="20"/></span>
+                <span id="TagMinus" style="width:20px;"><img src="minus.png" width="20" height="20"/></span>
+                <span id="TagColor" style="width:20px"><img src="color.png" width="20" height="20"/></span></div>
+        </div>
+    </div>
+            </div>
+                </center>
+        </div>
+        <div id="Overlay" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 800px; text-align: center;z-index:1000000; background-color: rgba(0, 0, 0, 0.62); display: none">
+
+            <div style="color: white; text-align: center;">
+                IMAGE GENERATED
+                 <hr />
+                Right click → Save Image as → you are done 
+            </div>
+           <div id="Cross" style="margin-left:90%; height:30px; width:30px;color:white; cursor:pointer">
+               X
+           </div>
+            <div style="width: auto; height: auto; margin-top: 50px">
+
+                <img id="Output" src="#" title="Right click to Download" alt="Sorry ! No image generated" style="padding: 5px; box-shadow: 0px 0px 10px 10px #8dc7f1" />
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            var Winwidth = $(window).width();
+            var ElemWidth = $("#Area").width();
+
+            $("#Area").css({ 'left': (Winwidth - ElemWidth) / 2 });
+
+            $("#Reset1").click(function () {
+
+                $("#Link").val("");
+
+            });
+           
+        });
+
+        var MainFont = 16;
+        var ByFont = 16;
+        var TagFont = 16;
+        var SmFont = 16;
+
+        var MainColor = "Black";
+        var ByColor = "Black";
+        var TagColor = "Black";
+        var SmColor = "Black";
+       
+
+        $("#MainPlus").click(function () {
+
+            ++MainFont;
+            canvas(MainFont);
+
+        });
+        $("#MainMinus").click(function () {
+
+            --MainFont;
+            canvas(MainFont);
+
+        });
+        $("#ByPlus").click(function () {
+
+            ++ByFont;
+            canvas(MainFont);
+
+        });
+        $("#ByMinus").click(function () {
+
+           --ByFont;
+            canvas(MainFont);
+
+        });
+        $("#TagPlus").click(function () {
+
+            ++TagFont;
+            canvas(MainFont);
+
+        });
+        $("#TagMinus").click(function () {
+
+            --TagFont;
+            canvas(MainFont);
+
+        });
+
+        $("#MainColor").click(function () {
+
+            $(this).colpick({
+
+                onSubmit: function (hsb, hex, rgb, el) {
+                   
+                    MainColor = hex;
+                    canvas(MainFont);                  
+                    $("#MainColor").colpickHide();
+                }
+            });
+          
+
+        });
+        $("#ByColor").click(function () {
+
+
+            $(this).colpick({
+
+                onSubmit: function (hsb, hex, rgb, el) {
+
+                    ByColor = hex;
+                    canvas(MainFont);
+                    $("#ByColor").colpickHide();
+                }
+            });
+
+
+        });
+        $("#TagColor").click(function () {
+
+
+            $(this).colpick({
+
+                onSubmit: function (hsb, hex, rgb, el) {
+
+                    TagColor = hex;
+                    SmColor = hex;
+                    canvas(MainFont);
+                    $("#TagColor").colpickHide();
+                }
+            });
+
+        });
+
+        $("#Write").click(function () {
+           
+            canvas(MainFont);           
+
+        });
+
+        
+        var Imgsrc = $("#Link").val();
+        $("#Button1").click(function () {
+
+            Imgsrc = $("#Link").val();
+            alert("Linked, Now write something");
+            
+
+        });
+
+        $("#ImagesList img").click(function () {
+
+            if ($("#Link").val() != "") {
+                alert("Sir, you can only slect one. Either link or saved pic");
+               
+            }
+            else {
+                Imgsrc = $(this).attr("src");
+            }
+           
+
+        });
+        $("#Cross").click(function () {
+
+            $("#Overlay").hide();
+
+        })
+        
+      
+
+        function canvas(MainFont) {
+
+
+            var canvas = document.getElementById("Workarea");
+            var context = canvas.getContext("2d");
+
+            var MainContent = $("#MainContentx").val();
+            var ByContent = $("#ByTextx").val();
+            var TagContent = $("#TagTextx").val();
+            var Salutation = $("#SaluteTextx").val();
+
+
+            var maxWidth = canvas.width - 50;
+            var lineHeight = MainFont + 10;
+            var x = (canvas.width - maxWidth) / 2;
+            var y = 35;
+            var text = MainContent;
+
+
+            var obj = new Image();
+            obj.onload = function () {
+                context.drawImage(obj, 0, 0, canvas.width, canvas.height);
+              
+                context.textAlign = 'left';
+                context.textBaseline = 'middle';
+               
+                wrapText(context, text, x, y, maxWidth, lineHeight);
+
+                TagText(context, canvas, TagContent);
+                ByText(context, canvas, ByContent);
+                SalutationText(context, canvas, Salutation);
+                MainText(context, canvas, MainContent);
+            };
+            obj.src = Imgsrc;
+
+          
+        }
+		  $("#Create").click(function () {
+				var canvas = document.getElementById("Workarea");
+                var dataURL = canvas.toDataURL("image/png");
+//var image = new Image();
+//image.src = canvas.toDataURL("image/png");
+// document.body.appendChild(image);
+                $("#Output").attr('src', dataURL);
+                $("#Overlay").show();
+
+
+            });
+        function TagText(context, canvas, TagContent) {
+            context.font = "" + TagFont + "pt Calibri";
+            context.fillStyle = "#" + TagColor;
+
+            var d = canvas.height - 40;
+            context.fillText(TagContent, 20, d);
+
+        }
+
+        function ByText(context, canvas, ByContent) {
+            context.font = "" + ByFont + "pt Calibri";
+            context.fillStyle = "#" + ByColor;
+
+            var d = canvas.height - 100;
+            context.fillText(ByContent, 500, d);
+        }
+
+        function SalutationText(context, canvas, Salutation) {
+            context.font = "" + SmFont + "pt Calibri";
+            context.fillStyle = "#" + SmColor ;
+
+            var d = canvas.height - 40;
+            context.fillText(Salutation, 500, d);
+        }
+
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            context.fillStyle = "#" + MainColor;
+            context.font = "" + MainFont + "pt Calibri";
+            var words = text.split(' ');
+            var line = '';
+
+            for (var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + ' ';
+                var metrics = context.measureText(testLine);
+                var testWidth = metrics.width;
+                if (testWidth > maxWidth && n > 0) {
+                    context.fillText(line, x, y);
+                    line = words[n] + ' ';
+                    y += lineHeight;
+                }
+                else {
+                    line = testLine;
+                }
+            }
+            
+            context.fillText(line, x, y);
+        }
+
+        $("#Area").hover(function () {
+
+            $("#Frame").fadeIn(200);
+        }, function () {
+
+            $("#Frame").fadeOut(200);
+
+        });
+
+    </script>
+</body>
+</html>
